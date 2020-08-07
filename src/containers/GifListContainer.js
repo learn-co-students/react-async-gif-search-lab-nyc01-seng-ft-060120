@@ -5,29 +5,47 @@ import apiKey from '../secret'
 
 export default class GifListContainer extends Component {
     state = {
-        apiResponse: {}
+        apiResponse: {},
+        query: "dolphin"
+    }
+
+    searchHandler = (e) => {
+        e.preventDefault()
+        this.fetchApi()
+    }
+
+    changeHandler = (e) => {
+        let t = e.target
+        this.setState({
+            query: t.value
+        })
     }
     
     componentDidMount() {
-        fetch(this.constructCallURL())
-            .then(resp => resp.json())
-            .then(json => this.setState({apiResponse: json}))
+        this.fetchApi()
     }
 
     constructCallURL() {
         let baseURL = "https://api.giphy.com/v1/gifs/search?q=";
-        let query = "dolphin";
+        let query = this.state.query;
         let apiPrep = "&api_key="
         let apiValue = apiKey;
         let rating = "&rating=g"
         return baseURL + query + apiPrep + apiValue + rating;
     }
 
+
+    fetchApi() {
+        fetch(this.constructCallURL())
+            .then(resp => resp.json())
+            .then(json => this.setState({apiResponse: json}))
+    }
+
     render() {
         return (
             <div>
+                <GifSearch changeHandler={this.changeHandler} searchHandler={this.searchHandler}/>
                 <GifList gifList={this.state.apiResponse} />
-                <GifSearch />
             </div>
         )
     }
