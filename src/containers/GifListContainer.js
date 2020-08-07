@@ -22,6 +22,11 @@ class GifListContainer extends React.Component {
           .then(data => {this.setState({gifs: data}), () => console.log(data)})
     };
 
+    searchedGifs = () => {
+        return this.state.gifs.data.slice(0, 3).filter(gif => gif.url.toLowerCase().includes(this.state.searchValue.toLowerCase()))
+    }
+    // ^ 'searchedGifs' filters through all the gif objects (in state) and returns the object whose url was typed in  
+
     render() { 
         
         // this.state.gifs.length !== 0
@@ -32,10 +37,11 @@ class GifListContainer extends React.Component {
         // console.log(threeGifs)
 
         return (  
-            <div>
+            <div class="ui segment">
+                <GifSearch searchValue={this.state.searchValue} searchHandler={this.searchHandler}/>
                 {!this.state.gifs.data 
                 ? <h1>DATA LOADING</h1> 
-                : this.state.gifs.data.slice(0, 3).map(gifObj => <GifList key={gifObj.id} gif={gifObj}/>)}
+                : this.searchedGifs().map(gifObj => <GifList key={gifObj.id} gif={gifObj}/>)}
             </div>
         );
     };
