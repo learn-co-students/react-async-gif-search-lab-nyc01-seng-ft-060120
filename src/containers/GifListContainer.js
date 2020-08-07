@@ -10,6 +10,7 @@ const API = "https://api.giphy.com/v1/gifs/search?q=dolphin&api_key=Ol7b8imLWYcq
 class GifListContainer extends React.Component {
     state = {
         gifs: [],
+        faves: {},
         searchValue: ""
     }
 
@@ -40,8 +41,18 @@ class GifListContainer extends React.Component {
             this.setState({gifs: {...this.state.gifs, data: newGifsArray}});
     };
 
-    filteredGifsByFaves = (newGifsArray) => {
-        // newGifsArray.filter(gifObj => )
+    filteredGifsByFaves = (gifObj) => {
+        console.log("Current 'state.faves': ", this.state.faves)
+        let newFave = this.state.gifs.data.find(gif => {
+            if (gif.id === gifObj.id) {
+                return gifObj
+            }
+        
+        });
+        console.log({...newFave})
+        this.setState({faves: {...newFave}})
+        console.log("Updated 'state.faves': ", this.state.faves)
+        return this.state.faves
     }
     // ^^ which we need to filter through and set as state in our new Faves Container
     // new state key (to track faves) here bc lowest common parent 
@@ -62,11 +73,11 @@ class GifListContainer extends React.Component {
                     <div class="column">
                         {!this.state.gifs.data 
                         ? <h1>DATA LOADING</h1> 
-                        : this.searchedGifs().map(gifObj => <GifList key={gifObj.id} gif={gifObj} addToFaves={this.addToFaves}/>)}
+                        : this.searchedGifs().map(gifObj => <GifList key={gifObj.id} gif={gifObj} addToFaves={this.addToFaves} filteredGifsByFaves={this.filteredGifsByFaves}/>)}
                     </div>
                     <div class="column">
                         <GifSearch searchValue={this.state.searchValue} searchHandler={this.searchHandler}/>
-                        <FavesContainer />
+                        <FavesContainer faves={this.filteredGifsByFaves()}/>
                     </div>
                 </div>
             </div>

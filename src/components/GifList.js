@@ -10,7 +10,7 @@ class GifList extends React.Component {
                 <ul>
                     {/* <li> */}
                     <img class="ui small image" alt="" src={this.props.gif.images.original.url}/>
-                    <button type="ui button" onClick={() => this.props.addToFaves(this.props.gif)} >Add to Faves</button>
+                    <button type="ui button" onClick={() => this.props.addToFaves(this.props.gif), () => this.props.filteredGifsByFaves(this.props.gif)} >Add to Faves</button>
                     {/* </li> */}
                 </ul>
             </div>
