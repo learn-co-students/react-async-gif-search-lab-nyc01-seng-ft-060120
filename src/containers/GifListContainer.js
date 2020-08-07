@@ -9,8 +9,9 @@ class GifListContainer extends React.Component {
         searchValue: ""
     }
 
-    searchHandler = (e) => {
-        this.setState({searchValue: e.target.value})
+    submitHandler = (e) => {
+        e.preventDefault()
+        this.setState({searchValue: e.target.children[0].value})
     }
 
     componentDidMount(){
@@ -25,7 +26,7 @@ class GifListContainer extends React.Component {
         console.log(gifs)
         return(
             <div>
-                <GifSearch searchValue={this.state.searchValue} searchHandler={this.searchHandler}/>
+                <GifSearch submitHandler={this.submitHandler}/>
                 <h1>Hello form GifListContainer</h1>
                 <ol>
                 {gifs}
