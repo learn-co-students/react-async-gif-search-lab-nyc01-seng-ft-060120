@@ -1,15 +1,20 @@
 import React from 'react'
-
 import NavBar from './NavBar'
+import GifListContainer from '../containers/GifListContainer'
+import '../App.css'
 
 // the App component should render out the GifListContainer component 
 
-const App = () => {
-  return (
-    <div>
-        < NavBar color='black' title="Giphy Search" />
-    </div>
-  )
+class App extends React.Component{
+  render(){
+
+    return (
+      <div className="App-container">
+          < NavBar color='black' title="Giphy Search" />
+          < GifListContainer />
+      </div>
+    )
+  }
 }
 
 export default App
