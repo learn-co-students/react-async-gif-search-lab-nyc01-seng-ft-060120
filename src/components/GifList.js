@@ -1,21 +1,16 @@
 import React from 'react';
 
 class GifList extends React.Component {
-    state = {  }
-
-    handleClick = () => {
-
-    }
-
     render() { 
-        console.log(this.props.gif.images.original.url)
+        console.log(this.props.gif)
+        // console.log(this.props.gif.images.original.url)
         // let { url } = this.props.gif
         return (  
-            <div class="ui segment">
+            <div style={{display: 'flex', justifyContent: 'center'}} class="ui segment">
                 <ul>
                     {/* <li> */}
-                        <img class="ui small image" alt="" src={this.props.gif.images.original.url}/>
-                        <button type="ui button" onClick={this.handleClick}>Like</button>
+                    <img class="ui small image" alt="" src={this.props.gif.images.original.url}/>
+                    <button type="ui button" onClick={() => this.props.addToFaves(this.props.gif)} >Add to Faves</button>
                     {/* </li> */}
                 </ul>
             </div>
