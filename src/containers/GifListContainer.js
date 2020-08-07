@@ -21,8 +21,7 @@ class GifListContainer extends React.Component {
         }) 
     }
 
-    componentDidUpdate(prevState){
-
+    componentDidUpdate(prevProps, prevState){
         if (prevState.text !== this.state.text){
 
             fetch(`https://api.giphy.com/v1/gifs/search?q=${this.state.text}&api_key=lFQWQWwOZaVmG9ZbS4POINPRtOHTSir9`)
@@ -35,8 +34,13 @@ class GifListContainer extends React.Component {
         
     }
 
-    searchText = (e) =>{
-        this.setState({text: e.target.value}, () => console.log(this.state.text))
+   
+
+    submitHandler = (e) =>{
+        // console.log("in submit in containter", e.target.children[0].value)
+        e.preventDefault()
+        this.setState({text: e.target.children[0].value})
+        
     }
 
     render(){
@@ -45,7 +49,7 @@ class GifListContainer extends React.Component {
             <div>
                 <h1>Gif List Container</h1>
                 < GifList gif={this.state.gif}/>
-                < GifSearch textValue={this.state.text} searchText={this.searchText}/>
+                < GifSearch searchText={this.searchText} submitHandler={this.submitHandler}/>
             </div>
         )
     }

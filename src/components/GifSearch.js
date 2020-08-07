@@ -2,18 +2,22 @@ import React from 'react'
 
 class GifSearch extends React.Component{
 
-    // typeHandler = (e) =>{
-    //     // console.log("in search -- typeHandler", this.props.searchText)
+   state = {
+       text: ""
+   }
 
-    // }
-   
+   searchText = (e) =>{
+    this.setState({text: e.target.value})
+    }
+
     render(){
        
         return(
             <div>
                 <h2>Gif Search</h2>
-                <form>
-                    <input onChange={this.props.searchText} type="text" name="searchBar" value={this.props.textValue}></input>
+                <form onSubmit={this.props.submitHandler}>
+                    <input onChange={this.searchText} type="text" name="searchBar" value={this.state.text}></input>
+                    <input type="submit" value="search"></input>
                 </form>
             </div>
         )
@@ -21,3 +25,4 @@ class GifSearch extends React.Component{
 }
 
 export default GifSearch
+
