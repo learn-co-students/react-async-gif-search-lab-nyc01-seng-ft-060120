@@ -9,7 +9,7 @@ class GifListContainer extends React.Component {
 
     state = {
         gif: [],
-        text: "cat"
+        text: "money"
     }
 
     componentDidMount(){
@@ -34,10 +34,8 @@ class GifListContainer extends React.Component {
         
     }
 
-   
-
     submitHandler = (e) =>{
-        // console.log("in submit in containter", e.target.children[0].value)
+        
         e.preventDefault()
         this.setState({text: e.target.children[0].value})
         
@@ -46,8 +44,8 @@ class GifListContainer extends React.Component {
     render(){
         
         return (
-            <div>
-                <h1>Gif List Container</h1>
+            <div className="container">
+                {/* <h1>Gif List Container</h1> */}
                 < GifList gif={this.state.gif}/>
                 < GifSearch searchText={this.searchText} submitHandler={this.submitHandler}/>
             </div>

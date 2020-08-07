@@ -13,8 +13,8 @@ class GifSearch extends React.Component{
     render(){
        
         return(
-            <div>
-                <h2>Gif Search</h2>
+            <div className="gifSearch" >
+                <h2 className="sectionTitle">Gif Search</h2>
                 <form onSubmit={this.props.submitHandler}>
                     <input onChange={this.searchText} type="text" name="searchBar" value={this.state.text}></input>
                     <input type="submit" value="search"></input>

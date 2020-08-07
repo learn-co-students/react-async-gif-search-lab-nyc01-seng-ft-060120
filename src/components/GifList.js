@@ -3,10 +3,10 @@ import React from 'react'
 class GifList extends React.Component {
     render(){
         return(
-            <div>
-                <h2>Gif List</h2>
-                <ul>
-                    {this.props.gif.map(obj => <li><img src={obj.images.original.url} alt=""/></li> )}
+            <div className="gifList">
+                <h2 className="sectionTitle">Gif List</h2>
+                <ul className="ulComponent">
+                    {this.props.gif.map(obj => <div><li><img src={obj.images.original.url} alt=""/></li><br></br></div> )}
                 </ul>
             </div>
         )
