@@ -23,7 +23,7 @@ class GifListContainer extends React.Component {
 
     componentDidUpdate(prevState){
 
-        if (prevState.text !== ""){
+        if (prevState.text !== this.state.text){
 
             fetch(`https://api.giphy.com/v1/gifs/search?q=${this.state.text}&api_key=lFQWQWwOZaVmG9ZbS4POINPRtOHTSir9`)
             .then(resp => resp.json())
