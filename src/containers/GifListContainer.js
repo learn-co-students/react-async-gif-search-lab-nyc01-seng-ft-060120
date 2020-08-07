@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GifList from '../components/GifList';
 import GifSearch from '../components/GifSearch';
+import apiKey from '../secret'
 
 export default class GifListContainer extends Component {
     state = {
@@ -17,10 +18,10 @@ export default class GifListContainer extends Component {
     constructCallURL() {
         let baseURL = "https://api.giphy.com/v1/gifs/search?q=";
         let query = "dolphin";
-        let apiKey = "&api_key="
-        let apiValue = "kPbEpiI85WQ6ocF5IkJ7BqWklc2Sh296";
+        let apiPrep = "&api_key="
+        let apiValue = apiKey;
         let rating = "&rating=g"
-        return baseURL + query + apiKey + apiValue + rating;
+        return baseURL + query + apiPrep + apiValue + rating;
     }
 
     render() {
