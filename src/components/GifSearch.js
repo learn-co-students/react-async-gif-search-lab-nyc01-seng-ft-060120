@@ -3,10 +3,18 @@ import React from 'react'
 
 function GifSearch(props) {
     return (
-        <div>
-            <h1>GifSearch</h1>
+        <div className="col-sm-3">
+            <h4 className="font-weight-bolder">Enter a Search Term:</h4>
             <form onSubmit={props.searchHandler}>
-                <input type="text" name="query" onChange={props.changeHandler}/>
+                <input 
+                    className="form-control"
+                    type="text" 
+                    name="query" 
+                    onChange={props.changeHandler}
+                />
+                <button 
+                type="submit" 
+                className="btn btn-success">Find Gifs</button>
             </form>
         </div>
     )   

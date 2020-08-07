@@ -43,9 +43,11 @@ export default class GifListContainer extends Component {
 
     render() {
         return (
-            <div>
-                <GifSearch changeHandler={this.changeHandler} searchHandler={this.searchHandler}/>
-                <GifList gifList={this.state.apiResponse} />
+            <div className="container">
+                <div className="row">
+                    <GifList gifList={this.state.apiResponse} />
+                    <GifSearch changeHandler={this.changeHandler} searchHandler={this.searchHandler} />
+                </div>
             </div>
         )
     }

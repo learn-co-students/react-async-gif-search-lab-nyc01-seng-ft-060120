@@ -9,9 +9,11 @@ let buildList = (list) => {
 
 function GifList(props) {
     return(
-        <ul>
-            {buildList(props.gifList)}
-        </ul>
+        <div className="col-sm-9">
+            <ul>
+                {buildList(props.gifList)}
+            </ul>
+        </div>
     )
 };
 
