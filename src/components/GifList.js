@@ -1,8 +1,14 @@
 import React from 'react';
 
-function GifList() {
+let buildList = (list) => {
+    console.log(list.data.length);
+}
+
+function GifList(props) {
     return(
-        <h1>You did it again!</h1>
+        <ul>
+            {buildList(props.gifList)}
+        </ul>
     )
 };
 

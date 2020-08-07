@@ -9,10 +9,9 @@ export default class GifListContainer extends Component {
     }
     
     componentDidMount() {
-        // fetch("https://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g")
         fetch(this.constructCallURL())
             .then(resp => resp.json())
-            .then(json => console.log(json))
+            .then(json => this.setState({apiResponse: json}))
     }
 
     constructCallURL() {
@@ -27,7 +26,7 @@ export default class GifListContainer extends Component {
     render() {
         return (
             <div>
-                <GifList />
+                <GifList gifList={this.state.apiResponse} />
                 <GifSearch />
             </div>
         )
