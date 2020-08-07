@@ -10,8 +10,9 @@ class GifListContainer extends React.Component {
         searchValue: ""
     }
 
-    searchHandler = (e) => {
-        this.setState({searchValue: e.target.value})
+    submitHandler = (e) => {
+        this.setState({searchValue: e.target.children[0].value})
+        e.preventDefault()
     }
 
     componentDidMount(){
@@ -22,10 +23,10 @@ class GifListContainer extends React.Component {
     }
     render(){
         let gifs = this.state.gifs.filter(gif => gif.title.toLowerCase().includes(this.state.searchValue.toLowerCase())).slice(0, 3).map(gifObj => <GifList key={gifObj.id} gif={gifObj}/>)        
-        console.log(gifs)
+        // console.log(gifs)
         return(
             <div>
-                <GifSearch searchValue={this.state.searchValue} searchHandler={this.searchHandler}/>
+                <GifSearch submitHandler={this.submitHandler}/>
                 <h1>Hello from our GifListContainer</h1>
                 <ul>
                 {gifs}

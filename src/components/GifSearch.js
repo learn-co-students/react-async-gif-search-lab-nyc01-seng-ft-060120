@@ -2,13 +2,19 @@ import React from 'react'
 
 class GifSearch extends React.Component{
 
+    set = {
+        searchValue: ""
+    }
 
-
+    searchHandler = (e) => {
+        this.setState({searchValue: e.target.value})
+    }
 
     render(){
         return(
-            <form>
-                <input placeholder="Search GIFs" value={this.props.searchValue} onChange={this.props.searchHandler}/>
+            <form onSubmit={this.props.submitHandler}>
+                <input placeholder="Search GIFs" value={this.searchValue} onChange={this.searchHandler}/>
+                <input type="submit" value="Submit"/>
             </form>
         )
     }
