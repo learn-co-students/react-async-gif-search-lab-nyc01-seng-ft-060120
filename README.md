@@ -23,6 +23,8 @@ students are also working on this lesson.
 
 [create_key]: https://developers.giphy.com/docs/api/#quick-start-guide
 
+# API Key: SUp5W1Cmvn5wflxqVOjE1XXu1rlZwrXT
+
 Once you've got your key, you should be able to access the Giphy API from a browser and receive
 a JSON response to confirm everything is working.
 
